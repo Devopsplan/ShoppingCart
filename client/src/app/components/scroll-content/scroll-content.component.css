@@ -1,0 +1,74 @@
+:host {
+  display: block;
+}
+
+.content-shelf {
+  padding: 20px 18px 10px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.13);
+  border-radius: 22px;
+  box-shadow: 0 8px 26px rgba(30, 51, 84, 0.055);
+}
+
+.content-shelf .mat-card-header {
+  margin-bottom: 8px;
+}
+
+.content-shelf .mat-card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.shelf-indicator {
+  width: 5px;
+  height: 23px;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #155eef, #19a0b7);
+}
+
+.content-shelf .mat-card-header button {
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.content-shelf .mat-card-header button mat-icon {
+  width: 17px;
+  height: 17px;
+  margin-left: 3px;
+  font-size: 17px;
+  vertical-align: middle;
+}
+
+.middle {
+  flex: 1 1 0;
+  min-width: 0;
+  margin: 12px 8px;
+  overflow-x: hidden;
+  touch-action: pan-y !important;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+.middle::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 599px) {
+  .content-shelf {
+    padding: 16px 10px 8px;
+    border-radius: 18px;
+  }
+
+  .content-shelf .mat-card-title {
+    font-size: 16px;
+  }
+
+  .middle {
+    margin: 10px 4px;
+  }
+}

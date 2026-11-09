@@ -1,0 +1,48 @@
+<div class="home-page" *ngIf="homePage">
+    <section class="hero-banner">
+        <div class="hero-copy">
+            <span class="hero-eyebrow"><mat-icon>auto_awesome</mat-icon> YOUR EVERYDAY, MADE EASIER</span>
+            <h1>Find something<br>you’ll love.</h1>
+            <p>Explore the latest picks, discover new favorites, and keep everything you need in one place.</p>
+            <a mat-raised-button color="accent" routerLink="/search" [queryParams]="{q: 'Mobiles'}">
+                Start exploring <mat-icon>arrow_forward</mat-icon>
+            </a>
+            <div class="hero-benefits">
+                <span><mat-icon>verified_user</mat-icon> A simpler way to shop</span>
+                <span><mat-icon>local_shipping</mat-icon> Follow your orders</span>
+            </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+            <div class="hero-orbit orbit-one"></div>
+            <div class="hero-orbit orbit-two"></div>
+            <div class="hero-icon"><mat-icon>shopping_bag</mat-icon></div>
+            <span class="hero-sparkle sparkle-one">✦</span>
+            <span class="hero-sparkle sparkle-two">✧</span>
+        </div>
+    </section>
+
+    <div class="home-sections">
+        <app-scroll-content [title]="'Browse by Category'" class="home-shelf">
+            <a class="category-card" *ngFor="let category of homePage.categories"
+                routerLink="/search" [queryParams]="{q:category.name}">
+                <div class="category-image-box">
+                    <img [src]="category.photoUrl" [alt]="category.name" loading="lazy">
+                </div>
+                <h4>{{category.name}}</h4>
+                <span class="category-link">Explore <mat-icon>arrow_forward</mat-icon></span>
+            </a>
+        </app-scroll-content>
+        <app-scroll-content [title]="categoryProduct.category" viewMoreLink="/search"
+            [viewMoreParams]="{q:categoryProduct.category}" class="home-shelf"
+            *ngFor="let categoryProduct of homePage.categoryProducts">
+            <a class="product-card" *ngFor="let product of categoryProduct.products"
+                [routerLink]="'/product/'+product.id">
+                <div class="product-image-box">
+                    <img [src]="product.photoUrl" [alt]="product.name" loading="lazy">
+                    <span class="product-open"><mat-icon>north_east</mat-icon></span>
+                </div>
+                <h5>{{product.name | reduce}}</h5>
+            </a>
+        </app-scroll-content>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+networks:
+  shopping-cart:
+    driver: bridge
+
+volumes:
+  postgres-data:
+
+services:
+  database:
+    image: postgres:18
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - shopping-cart
+
+  app:
+    image: shopping-cart
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      ASPNETCORE_ENVIRONMENT: ${ENVIRONMENT}
+      TokenKey: ${TokenKey}
+      AdminPassword: ${AdminPassword}
+      ConnectionStrings__DefaultConnection: ${DefaultConnection}
+      CloudinarySettings__CloudName: ${CLOUDINARY_CLOUD_NAME:-}
+      CloudinarySettings__ApiKey: ${CLOUDINARY_API_KEY:-}
+      CloudinarySettings__ApiSecret: ${CLOUDINARY_API_SECRET:-}
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - shopping-cart

@@ -1,0 +1,95 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  min-width: 220px;
+  width: min(300px, 85vw);
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.app-toolbar.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(110deg, #155eef 0%, #087eae 100%);
+  box-shadow: 0 5px 20px rgba(16, 49, 93, 0.18);
+  color: #fff;
+}
+
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.nav-search {
+  width: clamp(240px, 42vw, 620px);
+  margin: 0 24px;
+}
+
+.nav-search-field {
+  width: 100%;
+}
+
+.toolbar-actions {
+  align-items: center;
+}
+
+.app-sidenav {
+  border-radius: 0 20px 20px 0;
+  box-shadow: 8px 0 28px rgba(15, 23, 42, 0.12);
+}
+
+.app-sidenav a[mat-list-item] {
+  margin: 3px 10px;
+  border-radius: 12px;
+}
+
+.app-sidenav a[mat-list-item]:hover {
+  background: rgba(21, 94, 239, 0.09);
+}
+
+.profile {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.78);
+}
+
+.brand {
+  cursor: pointer;
+}
+
+.mobile-search-form {
+  width: 100%;
+  max-width: 560px;
+}
+
+.mobile-search-field {
+  width: 100%;
+}
+
+@media (max-width: 599px) {
+  .nav-brand {
+    font-size: 17px;
+  }
+
+  .toolbar-actions {
+    padding-right: 4px !important;
+  }
+
+  .app-toolbar.mat-toolbar.mat-primary {
+    box-shadow: 0 3px 14px rgba(16, 49, 93, 0.16);
+  }
+}
+
+.dark-theme .app-toolbar.mat-toolbar.mat-primary {
+  background: linear-gradient(110deg, #33235f 0%, #16446c 100%);
+}
